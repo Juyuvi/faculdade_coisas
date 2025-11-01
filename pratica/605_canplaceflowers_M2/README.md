@@ -1,6 +1,6 @@
 # Exercício 605 do Leetcode, "Can Place Flowers"
 
-A ideia é que recebemos um canteiro de flores com espaços individuais para uma, alguns já ocupados, e um número de flores para tentarmos inserir no canteiro. No entanto, as flores todas flores devem ter pelo menos 1 espaço de distância dos dois lados de outras flores. Ou seja, todas flores devem ser inseridas sem adjacência.
+A ideia é que recebemos um canteiro de flores com espaços individuais para uma, alguns já ocupados, e um número de flores para tentarmos inserir no canteiro. No entanto, todas as flores devem ter pelo menos 1 espaço de distância dos dois lados de outras flores. Ou seja, todas flores devem ser inseridas sem adjacência.
 
 Meu primeiro código passou em testes comuns, mas falhava em testes extremos. Ele foi escrito tentando seguir uma regra matemática que não estava 100% correta. Basicamente, estava procurando que o sufixo e prefixo 0's deviam ser pares e as sequências de 0's do meio deveriam ser ímpares, e com essa ideia seria "possível" encontrar o número de lugares possíveis para plantar.
 
