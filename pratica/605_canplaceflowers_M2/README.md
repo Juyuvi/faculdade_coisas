@@ -19,7 +19,7 @@ exemplo: se o número da sequência inicial (sufixo) de zeros fosse 5, iria ser 
 
 E uma ideia semelhante para o meio, mas invés de contabilizar a cada número par de espaços, seria contabilizado a cada número ímpar (maior que 1) de espaços.
 
-## Problemas do primeiro approach (durante a aula)
+## Problemas da primeira abordagem (durante a aula)
 
 A ideia de que o sufixo e prefixo deveriam ser um número minimamente par e o meio ímpar não exatamente estava correto, o que, conforme comentei anteriormente, causava muitos problemas nos casos extremos específicos, tendo que adicionar if's e else's para essas exceções.
 
@@ -32,7 +32,36 @@ Depois de não conseguir passar em todos os test cases do leetcode (principalmen
 A principal diferença que notei, era:
 1. O canteiro de flores era visualizado literalmente como um canteiro, e cada flor posta no array, era literalmente nele inserida se houvesse o espaço necessário (checando se não haviam flores adjacentes).
 2. A ideia de que, no array, haviam espaços vazios nos extremos do canteiro, além do array dado.
-3. Havia uma constante checagem dos espaços adjacentes na hora de inserir uma flor no canteiro.
+3. Havia uma constante checagem dos espaços adjacentes, direito e esquerdo, na hora de inserir uma flor no canteiro.
 
-# Como o approach dos outros me fez entender o que estava de errado no meu.
+## Como a abordagem dos outros me ajudou entender o que estava de errado no meu
 
+Desde o início, eu estava tendo uma visão puramente matemática e numérica do canteiro, invés de realmente imaginar um canteiro e flores sendo postas nos espaços 1 por 1. Além disso, também encarei os espaços dos extremos do canteiro como um padrão à parte, enquanto, imaginando como se fosse outro canteiro com espaços vazios invisível, era possível aplicar a mesma regra para todos intevalos do array.
+
+Então cheguei na ideia que a sequência de espaços vazios resultaria em um espaço disponível a cada momento que a sequência atingisse um número ímpar maior que um. Isso visualizando o canteiro com mais dois espaços vazios nos dois extremos.
+
+```
+if ( !( currZeroSequence % 2 == 0 ) && ( currZeroSequence > 1 ) ) {
+    avaPlots++;
+}
+```
+
+E ao tentar implementar esse algoritmo... funcionou 🥳.
+
+## Por que decidi usar uma abordagem semelhante a anteriormente falha
+
+Pode parecer (e realmente ser) burrice tentar uma abordagem seguindo quase a mesma lógica da que antes falhou, invés de só aceitar e seguir a ideia de outros, que consistia principalmente em checar os elementos adjacentes e alterar o valor do array (realmente colocando uma flor no canteiro). Mas isso significaria jogar completamente a lógica que pensei fora (que não estava 100% errada) e só copiar de outros que já realizaram o exercício, o que não sou fã.
+
+Além disso, eu estava tentando, desde a primeira abordagem, não alterar o array e seguir um padrão numérico para fazer o mínimo de checagens possíveis (pode não parecer, mas o código original era para ser enxuto).
+
+No fim, como minha nova abordagem funcionou, preferi defender minha ideia inicial do que apenas copiar, pois não iria me sentir bem caso contrário.
+
+## Por que funciona
+
+Se considerarmos a existência de dois espaços vazios nos extremos do canteiro, o número mínimo de espaços disponíveis para inserir uma flor é um número ímpar maior que 1, ou seja, 3. Independente de onde a sequência de espaços se encontra, e cada 2 espaços novos na sequência (ou seja, o próximo número ímpar) se torna possível inserir mais uma flor.
+
+Casos como flowerbed = [0] são tratados como se houvesse uma sequência de 3 espaços vazios. E casos como flowerbed = [0, 0, 0], são tratados como se houvessem 5, tornando possível aplicar a regra encontrada.
+
+Por outro lado, outros casos extremos como flowerbed = [1] ou [1, 1, 1] são facilmente eliminados como possbilidades pois não nenhuma sequência ímpar maior que 1 disponível.
+
+and it works.
