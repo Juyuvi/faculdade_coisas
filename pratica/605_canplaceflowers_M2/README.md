@@ -32,4 +32,7 @@ Depois de não conseguir passar em todos os test cases do leetcode (principalmen
 A principal diferença que notei, era:
 1. O canteiro de flores era visualizado literalmente como um canteiro, e cada flor posta no array, era literalmente nele inserida se houvesse o espaço necessário (checando se não haviam flores adjacentes).
 2. A ideia de que, no array, haviam espaços vazios nos extremos do canteiro, além do array dado.
+3. Havia uma constante checagem dos espaços adjacentes na hora de inserir uma flor no canteiro.
+
+# Como o approach dos outros me fez entender o que estava de errado no meu.
 
