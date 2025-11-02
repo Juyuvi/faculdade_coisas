@@ -1,4 +1,14 @@
-bool CanPlaceFlowers(int* flowerbed, int flowerbedSize, int n) {
+int main(){
+    int flowerbedSize = 5;
+    int flowerbed[] = {1,0,0,0,1};
+    int n = 1;
+
+    int res = CanPlaceFlowers(flowerbed, flowerbedSize, n);
+
+    printf("%d", res);
+}
+
+int CanPlaceFlowers(int* flowerbed, int flowerbedSize, int n) {
 
     /*
     ====================
@@ -29,7 +39,7 @@ bool CanPlaceFlowers(int* flowerbed, int flowerbedSize, int n) {
     }
 
     if ( avaPlots >= n ){
-        return true;
+        return 1;
     }
-    return false;
+    return 0;
 }
